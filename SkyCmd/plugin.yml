@@ -10,5 +10,7 @@ commands:
         description: Fling nearby creepers into the air
     squidbomb:
         description: drop 10 squid on your head
+    ocelotbomb:
+        description: drop 10 ocelots on your head
 
 version: 0.1

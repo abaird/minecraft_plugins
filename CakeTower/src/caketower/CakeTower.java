@@ -42,23 +42,23 @@ public class CakeTower extends JavaPlugin {
 
         cakeHeight = 50;
         
-        int cakeHeight;  //(2) 
-        cakeHeight = 5;
-        me.sendMessage("2) cake height is " + cakeHeight); // Print it
+        int localCakeHeight;  //(2) 
+        localCakeHeight = 5;
+        me.sendMessage("2) cake height is " + localCakeHeight); // Print it
         
-        makeCakes(me); // Print it
+        makeCakes(me, localCakeHeight); // Print it
         return true;
       }
     }
     return false;
   }
   
-  public void makeCakes(Player me) {
-    me.sendMessage("3) cake height is " + cakeHeight);
+  public void makeCakes(Player me, int localCakeHeight) {
+    me.sendMessage("3) cake height is " + localCakeHeight);
     Location loc = me.getLocation();
     loc.setY(loc.getY() + 2);
     loc.getWorld().getBlockAt(loc).setType(Material.STONE);
-    for(int i = 0;i < cakeHeight;i++) {
+    for(int i = 0;i < localCakeHeight;i++) {
       loc.setY(loc.getY() + 1);
       loc.getWorld().getBlockAt(loc).setType(Material.CAKE_BLOCK);
     }

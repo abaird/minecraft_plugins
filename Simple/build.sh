@@ -1,18 +1,10 @@
 #!/bin/sh
-#---
-# Excerpted from "Learn to Program with Minecraft Plugins",
-# published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material, 
-# courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose. 
-# Visit http://www.pragmaticprogrammer.com/titles/ahmine for more book information.
-#---
 
 # Set the variable MCSERVER to ~/Desktop/server
 # unless it's already set
-: ${MCSERVER:="$HOME/Desktop/server"}
+: ${MCSERVER:="$HOME"/Desktop/server}
 
-BUKKIT="$MCSERVER"/bukkit.jar
+BUKKIT="$MCSERVER/bukkit.jar"
 
 # Make sure that the bukkit jar
 # exists and is readable
@@ -46,6 +38,8 @@ jar -cf dist/"$NAME.jar" *.yml -C bin . || exit 3
 # 3. Copy to server
 echo "Deploying jar to $MCSERVER/plugins..."
 test ! -d "$MCSERVER/plugins" && mkdir -p "$MCSERVER/plugins" 
-cp dist/$NAME.jar "$MCSERVER"/plugins || exit 4
+cp dist/$NAME.jar "$MCSERVER/plugins" || exit 4
 
 echo "Completed Successfully."
+
+

@@ -1,11 +1,3 @@
-/***
- * Excerpted from "Learn to Program with Minecraft Plugins",
- * published by The Pragmatic Bookshelf.
- * Copyrights apply to this code. It may not be used to create training material, 
- * courses, books, articles, and the like. Contact us if you are in doubt.
- * We make no guarantees that this code is fit for any purpose. 
- * Visit http://www.pragmaticprogrammer.com/titles/ahmine for more book information.
-***/
 package simple;
 
 import java.util.logging.Logger;
@@ -13,7 +5,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;//(1)
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.Sound;
+import org.bukkit.Location;
+import org.bukkit.entity.Pig;
 
 public class Simple extends JavaPlugin {
   public static Logger log = Logger.getLogger("Minecraft");
@@ -26,14 +21,45 @@ public class Simple extends JavaPlugin {
   public void onDisable() {
     log.info("[Simple] Server stopping.");
   }
+
+  public static int howlong(int years){
+    return years * 356 * 3600;
+  }
+
+  public static Location origin = null;
+
   public boolean onCommand(CommandSender sender, Command command, 
                            String commandLabel, String[] args) {         
     if (commandLabel.equalsIgnoreCase("simple")) {
       if (sender instanceof Player) { 
         Player me = (Player)sender;
-        // Put your code after this line:
-        //(2)
-        // ...and finish your code before this line.
+        origin = me.getLocation();
+        Location myLocation = new Location(origin.getWorld(), 0,0,0);
+        
+        
+        int myAge = 40;
+        int twiceMyAge = 80;
+
+        float volume = 0.9f;
+        float pitch = 1.0f;
+
+        double dayOnio = 152853.5047;
+
+        String myName = "Alan C. Baird";
+
+        long secondsOld = howlong(myAge);
+
+        me.sendMessage("My name is " + myName);
+        me.sendMessage("I am " + myAge + " years old");
+        me.sendMessage("I am " + secondsOld + " seconds old");
+        me.sendMessage("volume: " + volume);
+        me.sendMessage("pitch: " + pitch);
+        me.playSound(me.getLocation(), Sound.GHAST_SCREAM, volume, pitch);
+
+        for (int i=0; i < 10; i++) {
+          me.getWorld().spawn(me.getLocation(), Pig.class);
+        }
+
         return true;
         }
     }

@@ -33,7 +33,7 @@ public class ArrayOfBlocks extends JavaPlugin {
     towerMaterials[3] = Material.GLASS;
     towerMaterials[4] = Material.ANVIL;
     
-    for (int i=0; i < towerMaterials.length; i++) {
+    for (int i=towerMaterials.length - 1; i >= 0; i--) {
       loc.setY(loc.getY() + 1); // go up one each time
       loc.getWorld().getBlockAt(loc).setType(towerMaterials[i]);
     }    
